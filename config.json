@@ -1,0 +1,110 @@
+{
+  "darwin": {
+    "pkg": {
+      "cmd": "brew",
+      "name": "Homebrew",
+      "install": "install",
+      "preinstall": [
+        "[ ! \"$(command -v brew || true)\" ] && /usr/bin/ruby -e \"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)\"",
+        "[ \"$(command -v brew || true)\" ] && brew update && brew upgrade",
+        "brew cask"
+      ],
+      "postinstall": [
+        "brew cleanup",
+        "brew doctor"
+      ],
+      "setup": "/usr/bin/ruby -e \"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)\"",
+      "update": "update",
+      "upgrade": "upgrade",
+      "url": "https://brew.sh"
+    },
+    "packages": {
+      "list": [
+        "git",
+        "node",
+        "shellcheck",
+        "tmux",
+        "vim",
+        "alfred",
+        "dropbox",
+        "emacs",
+        "keepassxc",
+        "sync"
+      ],
+      "tmux": {
+        "requires": [
+          "git"
+        ]
+      },
+      "vim": {
+        "requires": [
+          "python",
+          "ruby"
+        ]
+      },
+      "alfred": {
+        "pkg": {
+          "prefix": "cask"
+        }
+      },
+      "dropbox": {
+        "pkg": {
+          "prefix": "cask"
+        }
+      },
+      "emacs": {
+        "pkg": {
+          "prefix": "cask"
+        }
+      },
+      "keepassxc": {
+        "pkg": {
+          "prefix": "cask"
+        }
+      }
+    }
+  },
+  "windows": {
+    "pkg": {
+      "cmd": "scoop",
+      "name": "Scoop",
+      "install": "install",
+      "postinstall": [
+        "scoop install aria2 git",
+        "scoop bucket add extras",
+        "scoop cleanup"
+      ],
+      "setup": "/usr/bin/ruby -e \"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)\"",
+      "update": "update",
+      "upgrade": "update",
+      "url": "https://brew.sh"
+    },
+    "preinstall": [],
+    "packages": {
+      "list": [
+        "concfg",
+        "conemu",
+        "curl",
+        "emacs",
+        "grep",
+        "keepassxc",
+        "msys2",
+        "nodejs",
+        "pshazz",
+        "touch",
+        "vim"
+      ],
+      "concfg": {
+        "postinstall": [
+          "concfg import material basic"
+        ]
+      },
+      "vim": {
+        "requires": [
+          "python",
+          "ruby"
+        ]
+      }
+    }
+  }
+}
